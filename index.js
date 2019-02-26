@@ -117,6 +117,37 @@ tableHeader.addEventListener('click', (event) => {
   }
 })
 
+const tableBody = document.querySelector('tbody');
+tableBody.addEventListener('focusout', event => {
+  if (event.target.tagName === 'INPUT') {
+    const inputBox = event.target;
+    const tableCell = inputBox.parentElement;
+    // send data to api via fetch using (inputBox.value)
+    tableCell.innerHTML = inputBox.value;
+  }
+})
+tableBody.addEventListener('click', event => {
+  switch(event.target.tagName) {
+    case 'TD':
+    const tableCell = event.target;
+
+    // inputBox = document.createElement('input');
+    // inputBox.classList.add('edit');
+    // inputBox.value = tableCell.innerText;
+
+    const inputBox = `<input class="edit" type="text" value="${tableCell.innerText}" />`
+    tableCell.innerHTML = inputBox;
+    tableCell.children[0].focus();
+
+    break;
+
+    case 'INPUT':
+    break;
+  }
+})
+
+
+
 const renderTable = (data) => {
   const tableBody = document.querySelector('tbody');
   tableBody.innerHTML = '';
