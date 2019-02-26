@@ -46,6 +46,7 @@ select {
 
 thead {
   border-bottom: 1px solid #7b7b7b;
+  cursor: pointer;
 }
 
 tfoot th {
